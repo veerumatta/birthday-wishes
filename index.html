@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday 🎉</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: zoomIn 1.5s ease;
+        }
+
+        h1 {
+            color: #ff4081;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            background: #ff4081;
+            border: none;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e91e63;
+            transform: scale(1.05);
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 50px;
+            border-radius: 50%;
+            animation: floatUp 6s ease-in forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-120vh); opacity: 0; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🎉 Happy Birthday 🎂</h1>
+        <h2 id="name">Mavvayya 💖</h2>
+        <p id="message">
+            మీ జీవితంలో ఆనందం, ఆరోగ్యం,<br>
+            విజయాలు ఎప్పుడూ ఉండాలని కోరుకుంటున్నాను ✨
+        </p>
+        <button onclick="changeWish()">Click for Surprise 🎁</button>
+    </div>
+
+    <script>
+        const wishes = [
+            "నీ ప్రతి కల నిజం కావాలని కోరుకుంటున్నాను 🎊",
+            "నీ జీవితంలో సంతోషం ఎప్పుడూ వెలుగొందాలి 🌟",
+            "ఈ రోజు నీకు ప్రత్యేకమైనదిగా ఉండాలి 🎂",
+            "Smile always 😄 Stay blessed 🙏",
+            "Best moments & beautiful memories ahead 💫"
+        ];
+
+        function changeWish() {
+            const random = Math.floor(Math.random() * wishes.length);
+            document.getElementById("message").innerHTML = wishes[random];
+            createBalloon();
+        }
+
+        function createBalloon() {
+            const balloon = document.createElement("div");
+            balloon.className = "balloon";
+            balloon.style.left = Math.random() * 100 + "vw";
+            balloon.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 6000);
+        }
+    </script>
+
+</body>
+</html>
